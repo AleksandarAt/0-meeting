@@ -26,7 +26,10 @@ class PostController extends Controller {
             'inhoud' => 'required',
         ]);
 
-        Post::create($request->only('titel', 'inhoud'));
+        Post::create([
+        'titel' => $request->titel,
+        'inhoud' => $request->inhoud,
+    ]);
 
         return redirect('/posts')->with('success', 'Post aangemaakt!');
     }
